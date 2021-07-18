@@ -1,27 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <input v-model="message" placeholder="edit me" />
-    <p>Message is: {{ message }}</p> 
-  </div>
-  <div>
-    <span>Multiline message is:</span>
-    <p style="white-space: pre-line;">{{ messageArea }}</p>
-    <br />
-    <textarea v-model="messageArea" placeholder="add multiple lines"></textarea>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <BlogPost title="foo bar"></BlogPost>
   </div>
 </template>
 
 <script>
+import BlogPost from '@/components/BlogPost.vue';
 
 export default {
   name: 'App',
   data() {
     return {
-      message:'',
-      messageArea: ''
     };
   },
+  components : {
+    BlogPost,
+  }
 }
 </script>
 

@@ -4,7 +4,8 @@
     firstName:<input v-model="firstName">
     lastName:<input v-model="lastName" />
   </p>
-  <p>fullname: {{ fullName }}</p>
+  <div :class="{ active: isActive, textdanger: hasError  }"><p>fullname: {{ fullName }}</p></div>
+  
 </template>
 
 <script>
@@ -15,6 +16,8 @@ export default {
     return {
       firstName:'',
       lastName:'',
+      isActive: true,
+      hasError: true,
     };
   },
   computed: {
@@ -33,5 +36,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.active {
+  color: red;
+}
+.textdanger {
+  font-weight: bold
 }
 </style>

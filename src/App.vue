@@ -1,40 +1,42 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <div>count: {{count}} </div>
-  <button @click="increments()">Up vote</button>
-  <div id="computed-basics">
-    <p>Has published books:</p><span>{{ publishedBooksMessage }}</span>
-  </div>
+  <p>
+    Ask a yes/no question:
+    <input v-model="question" />
+  </p>
+  <p>{{ answer }}</p>
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'App',
   data() {
     return {
-      message: 'Helo Vuejs3!',
-      count : 1,
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      },
+      question:'',
+      answer: 'Questions usually contain a question mark. ;-)',
+    };
+  },
+  watch: {
+    // question が変わるたびに、この関数が実行される
+    question(newQuestion, oldQuestion) {
+      if (newQuestion.indexOf('?') > -1) {
+        this.getAnswer();
+      }
     }
   },
-  computed: {
-    // 算出 getter 関数
-    publishedBooksMessage()  {
-      // `this` は vm インスタンスを指す
-      return this.author.books.length > 0 ? 'Yes' : 'No'
-    },
-  },
-  methods : {
-    increments() {
-      this.count++;
+  methods: {
+    getAnswer() {
+      this.answer = 'Thinking...'
+      axios
+        .get('https://yesno.wtf/api')
+        .then(response => {
+          this.answer = response.data.answer
+        })
+        .catch(error => {
+          this.answer = 'Error! Could not reach the API. ' + error
+        })
     }
   }
 }

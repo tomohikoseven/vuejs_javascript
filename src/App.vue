@@ -1,44 +1,27 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <p>
-    Ask a yes/no question:
-    <input v-model="question" />
+    firstName:<input v-model="firstName">
+    lastName:<input v-model="lastName" />
   </p>
-  <p>{{ answer }}</p>
+  <p>fullname: {{ fullName }}</p>
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   name: 'App',
   data() {
     return {
-      question:'',
-      answer: 'Questions usually contain a question mark. ;-)',
+      firstName:'',
+      lastName:'',
     };
   },
-  watch: {
-    // question が変わるたびに、この関数が実行される
-    question(newQuestion, oldQuestion) {
-      if (newQuestion.indexOf('?') > -1) {
-        this.getAnswer();
-      }
-    }
+  computed: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
+    },
   },
-  methods: {
-    getAnswer() {
-      this.answer = 'Thinking...'
-      axios
-        .get('https://yesno.wtf/api')
-        .then(response => {
-          this.answer = response.data.answer
-        })
-        .catch(error => {
-          this.answer = 'Error! Could not reach the API. ' + error
-        })
-    }
-  }
 }
 </script>
 

@@ -1,20 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <a href="#">{{ message }}</a>
+  <div>count: {{count}} </div>
+  <button @click="increments()">Up vote</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data() {
     return {
-      message: 'Helo Vuejs3!'
+      message: 'Helo Vuejs3!',
+      count : 1
+    }
+  },
+  methods : {
+    increments() {
+      this.count++;
     }
   }
 }

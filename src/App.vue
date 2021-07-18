@@ -1,11 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <p>
-    firstName:<input v-model="firstName">
-    lastName:<input v-model="lastName" />
-  </p>
-  <div :class="{ active: isActive, textdanger: hasError  }"><p>fullname: {{ fullName }}</p></div>
-  
+  <div>
+    <input v-model="message" placeholder="edit me" />
+    <p>Message is: {{ message }}</p> 
+  </div>
+  <div>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ messageArea }}</p>
+    <br />
+    <textarea v-model="messageArea" placeholder="add multiple lines"></textarea>
+  </div>
 </template>
 
 <script>
@@ -14,16 +18,9 @@ export default {
   name: 'App',
   data() {
     return {
-      firstName:'',
-      lastName:'',
-      isActive: true,
-      hasError: true,
+      message:'',
+      messageArea: ''
     };
-  },
-  computed: {
-    fullName() {
-      return this.firstName + ' ' + this.lastName;
-    },
   },
 }
 </script>
@@ -36,11 +33,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-.active {
-  color: red;
-}
-.textdanger {
-  font-weight: bold
 }
 </style>

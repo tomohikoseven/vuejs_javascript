@@ -1,7 +1,5 @@
 <template>
-  <input :value="test" @input="test = $event.target.value"/>
-  <p> p: {{ modelValue }} </p>
-  <p> {{ test }} </p>
+  <input :value="modelValue" @input="$emit('updateValue', $event.target.value)"/>
 </template>
 
 <script>
@@ -9,11 +7,6 @@
 export default {
   name: 'CustomInput',
   props: ['modelValue'],
-  data() {
-    return {
-      test: this.modelValue,
-    };
-  }
 }
 </script>
 

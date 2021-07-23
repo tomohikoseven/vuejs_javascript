@@ -2,7 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <BlogPosts title="foo bar"></BlogPosts>
-    <CustomInputs model-value="増田" />
+    <CustomInputs :model-value="searchText" @updateValue="searchText = $event" />
+    <p> {{ searchText }} </p>
   </div>
 </template>
 

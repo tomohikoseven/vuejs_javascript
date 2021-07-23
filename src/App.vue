@@ -1,21 +1,25 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <BlogPost title="foo bar"></BlogPost>
+    <BlogPosts title="foo bar"></BlogPosts>
+    <CustomInputs model-value="増田" />
   </div>
 </template>
 
 <script>
-import BlogPost from '@/components/BlogPost.vue';
+import BlogPosts from '@/components/BlogPosts.vue';
+import CustomInputs from '@/components/CustomInputs.vue';
 
 export default {
   name: 'App',
   data() {
     return {
+      searchText:'',
     };
   },
   components : {
-    BlogPost,
+    BlogPosts,
+    CustomInputs,
   }
 }
 </script>

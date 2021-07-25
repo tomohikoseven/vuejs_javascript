@@ -10,9 +10,10 @@
 
 export default {
   name: 'button-counter',
+  props: ['initialCounter'],
   data() {
     return {
-      count : 0
+      count : this.initialCounter,
     };
   },
 }

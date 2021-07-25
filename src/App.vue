@@ -1,17 +1,12 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <BlogPosts title="foo bar" v-bind="author"></BlogPosts>
-    <CustomInputs :model-value="searchText" @updateValue="searchText = $event" />
-    <p> {{ searchText }} </p>
-    <alert-box>Something bad happened</alert-box>
+    <ButtonCounter :initialCounter='1' />
   </div>
 </template>
 
 <script>
-import BlogPosts from '@/components/BlogPosts.vue';
-import CustomInputs from '@/components/CustomInputs.vue';
-import AlertBox from '@/components/AlertBox.vue';
+import ButtonCounter from '@/components/ButtonCounter.vue';
 
 export default {
   name: 'App',
@@ -22,9 +17,7 @@ export default {
     };
   },
   components : {
-    BlogPosts,
-    CustomInputs,
-    AlertBox,
+    ButtonCounter,
   }
 }
 </script>

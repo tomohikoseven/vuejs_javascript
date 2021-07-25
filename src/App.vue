@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <BlogPosts title="foo bar"></BlogPosts>
+    <BlogPosts title="foo bar" v-bind="author"></BlogPosts>
     <CustomInputs :model-value="searchText" @updateValue="searchText = $event" />
     <p> {{ searchText }} </p>
     <alert-box>Something bad happened</alert-box>
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       searchText:'',
+      author : { name: 'Veronica', company: 'Microsoft'},
     };
   },
   components : {

@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <ButtonCounter :initialCounter='1' />
+    <ButtonCounter2 :initialCounter='1' />
     <DatePicker data-status="activated" @change="submitChange" />
   </div>
 </template>
 
 <script>
-import ButtonCounter from '@/components/ButtonCounter.vue';
+import ButtonCounter2 from '@/components/ButtonCounter2.vue';
 import DatePicker from '@/components/DatePicker.vue';
 
 export default {
@@ -19,7 +19,7 @@ export default {
     };
   },
   components : {
-    ButtonCounter,
+    ButtonCounter2,
     DatePicker,
   },
   methods : {

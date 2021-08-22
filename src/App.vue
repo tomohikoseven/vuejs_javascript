@@ -1,30 +1,40 @@
 <template>
   <div id="app">
+    <div>
     <img alt="Vue logo" src="./assets/logo.png">
-    <ButtonCounter2 :initialCounter='1' />
-    <DatePicker data-status="activated" @change="submitChange" />
+    </div>
+    <templateSyntax message="i am hero!"/>
+    <TodoApp />
+    <CustomInputs :modelValue="testInput" @my-input="changeText($event)" />
   </div>
 </template>
 
 <script>
-import ButtonCounter2 from '@/components/ButtonCounter2.vue';
-import DatePicker from '@/components/DatePicker.vue';
+import templateSyntax from "@/components/template-syntax";
+import TodoApp from "@/components/TodoApp";
+import CustomInputs from "@/components/CustomInputs";
 
 export default {
   name: 'App',
   data() {
     return {
       searchText:'',
+      testInput: 'a123',
       author : { name: 'Veronica', company: 'Microsoft'},
     };
   },
   components : {
-    ButtonCounter2,
-    DatePicker,
+    templateSyntax,
+    TodoApp,
+    CustomInputs,
   },
   methods : {
     submitChange(event) {
       console.log(event.target.value);
+    },
+    changeText(event){
+      console.log('Parent:', event);
+      this.testInput = event;
     }
   }
 }

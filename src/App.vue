@@ -33,7 +33,6 @@ export default {
       console.log(event.target.value);
     },
     changeText(event){
-      console.log('Parent:', event);
       this.testInput = event;
     }
   }
